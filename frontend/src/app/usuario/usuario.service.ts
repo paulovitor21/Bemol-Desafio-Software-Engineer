@@ -66,4 +66,9 @@ export class UsuarioService {
     return throwError(errorMessage);
   }
 
+  validarCep(cep) {
+    const url = `https://viacep.com.br/ws/${cep}/json/`;
+    return this.httpClient.get(url);
+  }
+
 }

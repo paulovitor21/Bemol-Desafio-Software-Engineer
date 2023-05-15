@@ -40,6 +40,9 @@
         <div *ngIf="f.cep.touched && f.cep.invalid" class="alert alert-danger">
           <div *ngIf="f.cep.errors.required">*CEP é obrigatório.</div>
           <div *ngIf="f.cep.errors.pattern">*O CEP deve estar no formato 12345-678.</div>
+          <div *ngIf="f.cep.errors && f.cep.errors.cepNaoAmazonas">
+            O CEP informado não pertence ao estado do Amazonas.
+          </div>
         </div>        
       </div>
     </div>
