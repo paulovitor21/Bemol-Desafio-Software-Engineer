@@ -41,3 +41,5 @@ Após a configuração, o servidor estará disponível no endereço `http://loca
 ### Execução
 
 Após a configuração, o servidor estará disponível no endereço `http://localhost:4200`. Você pode acessar o frontend usando o seu navegador de preferência.
+
+![Arquitetura do Sistema] (https://github.com/paulovitor21/Bemol-Desafio-Software-Engineer/blob/main/arquitetura.png)
