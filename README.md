@@ -42,6 +42,7 @@ Após a configuração, o servidor estará disponível no endereço `http://loca
 
 Após a configuração, o servidor estará disponível no endereço `http://localhost:4200`. Você pode acessar o frontend usando o seu navegador de preferência.
 
+## Arquitetura do Sistema
 <div style="display: flex;">
-  <img src="arquitetura.png" width="900">
+  <img src="arquitetura.png" width="700">
 </div>
