@@ -27,6 +27,7 @@
         <div *ngIf="f.data_nascimento.touched && f.data_nascimento.invalid" class="alert alert-danger">
           <div *ngIf="f.data_nascimento.errors.required">*Name is required.</div>
           <div *ngIf="f.data_nascimento.errors.pattern">*The name must only contain letters.</div>
+          <div *ngIf="f.data_nascimento.hasError('idadeMinima')">Você precisa ser maior de 18 anos para se cadastrar.</div>
         </div>
       </div>
     </div>

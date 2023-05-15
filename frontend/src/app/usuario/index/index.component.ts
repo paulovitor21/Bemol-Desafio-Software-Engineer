@@ -24,7 +24,7 @@ export class IndexComponent implements OnInit {
   deleteUsuario(id){
     this.usuarioService.delete(id).subscribe(res => {
          this.usuarios = this.usuarios.filter(item => item.id !== id);
-         console.log('Person deleted successfully!');
+         console.log('Usuário removido com sucesso!');
     })
   }
 

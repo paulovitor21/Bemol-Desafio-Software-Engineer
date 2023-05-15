@@ -5,6 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// ... restante do código do componente
+
+
 import { UsuarioModule } from './usuario/usuario.module';
 
 
@@ -16,7 +21,8 @@ import { UsuarioModule } from './usuario/usuario.module';
     BrowserModule,
     AppRoutingModule,
     UsuarioModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   
   ],
   providers: [],
