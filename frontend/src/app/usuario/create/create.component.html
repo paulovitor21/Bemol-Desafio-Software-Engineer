@@ -1,0 +1,48 @@
+<div>
+
+  <div class="d-flex justify-content-between">
+    <h4>Form person</h4>
+    <a href="#" routerLink="/usuario/index" class="btn btn-primaryt">Back</a>
+  </div>
+
+  <hr />
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="form-group row">
+      <div class="col-md-6 ">
+        <label for="nome">Nome:</label>
+        <input formControlName="nome" id="nome" type="text" class="form-control">
+        <div *ngIf="f.nome.touched && f.nome.invalid" class="alert alert-danger">
+          <div *ngIf="f.nome.errors.required">*Name is required.</div>
+          <div *ngIf="f.nome.errors.pattern">*The name must only contain letters.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row mt-4">
+      <div class="col-md-6 ">
+        <label for="data_nascimento">Data de nascimento:</label>
+        <input formControlName="data_nascimento" id="data_nascimento" type="date" class="form-control">
+        <div *ngIf="f.data_nascimento.touched && f.data_nascimento.invalid" class="alert alert-danger">
+          <div *ngIf="f.data_nascimento.errors.required">*Name is required.</div>
+          <div *ngIf="f.data_nascimento.errors.pattern">*The name must only contain letters.</div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row mt-4">
+      <div class="col-md-6 ">
+        <label for="cep">Cep:</label>
+        <input formControlName="cep" id="cep" type="text" class="form-control">
+        <div *ngIf="f.cep.touched && f.cep.invalid" class="alert alert-danger">
+          <div *ngIf="f.cep.errors.required">*CEP é obrigatório.</div>
+          <div *ngIf="f.cep.errors.pattern">*O CEP deve estar no formato 12345-678.</div>
+        </div>        
+      </div>
+    </div>
+
+    <button class="btn btn-primary mt-4" type="submit" [disabled]="!form.valid">Submit</button>
+  </form>
+</div>
