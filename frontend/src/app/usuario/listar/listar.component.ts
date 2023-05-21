@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { UsuarioService } from '../usuario.service';
 import { Usuario } from '../usuario';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  selector: 'app-listar',
+  templateUrl: './listar.component.html',
+  styleUrls: ['./listar.component.css']
 })
-export class IndexComponent implements OnInit {
-
+export class ListarComponent {
   usuarios: Usuario[] = [];
 
   constructor(public usuarioService: UsuarioService) { }
@@ -27,5 +26,6 @@ export class IndexComponent implements OnInit {
          console.log('Usuário removido com sucesso!');
     })
   }
+
 
 }

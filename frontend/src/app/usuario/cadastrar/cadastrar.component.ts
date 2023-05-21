@@ -1,24 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { UsuarioService } from '../usuario.service';
-import { CepService } from '../cep.service';
+//import { CepService } from '../cep.service';
+import { VerificaIdadeService } from 'src/app/servico/verifica-idade.service';
+import { VerificaCepService } from 'src/app/servico/verifica-cep.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, AsyncValidatorFn } from '@angular/forms';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  selector: 'app-cadastrar',
+  templateUrl: './cadastrar.component.html',
+  styleUrls: ['./cadastrar.component.css']
 })
-
-
-export class CreateComponent implements OnInit {
-
+export class CadastrarComponent {
   form: FormGroup;
 
   constructor(
     public usuarioService: UsuarioService,
-    public cepService: CepService,
+    public verificaIdadeService: VerificaIdadeService,
+    //public cepService: CepService,
+    public verificaCepService: VerificaCepService,
     private router: Router
   ) { }
 
@@ -35,7 +36,7 @@ export class CreateComponent implements OnInit {
       }
 
       // Utiliza a API do ViaCEP para verificar o estado do CEP
-      return this.cepService.validarCep(cep).toPromise()
+      return this.verificaCepService.validarCep(cep).toPromise()
         .then((data: any) => {
           if (data.erro) {
             return { cepInvalido: true };
@@ -49,33 +50,10 @@ export class CreateComponent implements OnInit {
 
     this.form = new FormGroup({
       nome: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+')]),
-      data_nascimento: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}-\d{2}-\d{2}$/), idadeMinimaValidator]),
+      data_nascimento: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}-\d{2}-\d{2}$/), this.verificaIdadeService.idadeMinimaValidator]),
       cep: new FormControl('', [Validators.required, Validators.pattern("^[0-9]{5}-[0-9]{3}$")], validarCepAmazonas)
     });
-
-    function idadeMinimaValidator(control: FormControl) {
-      // Obtém a data de nascimento do campo
-      const dataNascimento = new Date(control.value);
-
-      // Obtém a data atual
-      const dataAtual = new Date();
-
-      // Calcula a diferença de idade em anos
-      const diferencaAnos = dataAtual.getFullYear() - dataNascimento.getFullYear();
-
-      // Verifica se a idade é menor que 18 anos
-      if (diferencaAnos < 18) {
-        // Retorna a validação personalizada
-        return {
-          idadeMinima: {
-            valid: false
-          }
-        };
-      }
-
-      // A idade é válida, retorna null (sem erros)
-      return null;
-    }
+ 
   }
 
   get f() {
@@ -85,8 +63,9 @@ export class CreateComponent implements OnInit {
   submit() {
     console.log(this.form.value);
     this.usuarioService.create(this.form.value).subscribe(res => {
-      console.log('Person created successfully!');
-      this.router.navigateByUrl('usuario/index');
+      console.log('Usuario cadastrado com sucesso!');
+      this.router.navigateByUrl('usuario/listar');
     });
   }
 }
+

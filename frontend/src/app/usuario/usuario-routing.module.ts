@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { IndexComponent } from './index/index.component';
-import { CreateComponent } from './create/create.component';
-import { EditComponent } from './edit/edit.component';
+import { ListarComponent } from './listar/listar.component';
+import { CadastrarComponent } from './cadastrar/cadastrar.component';
+import { EditarComponent } from './editar/editar.component';
 
 const routes: Routes = [
-  { path: 'usuario', redirectTo: 'usuario/index', pathMatch: 'full'},
-  { path: 'usuario/index', component: IndexComponent },
-  { path: 'usuario/create', component: CreateComponent },
-  { path: 'usuario/edit/:idUsuario', component: EditComponent } 
+  { path: 'usuario', redirectTo: 'usuario/listar', pathMatch: 'full'},
+  { path: 'usuario/listar', component: ListarComponent },
+  { path: 'usuario/cadastrar', component: CadastrarComponent },
+  { path: 'usuario/editar/:idUsuario', component: EditarComponent } 
 ];
 
 @NgModule({

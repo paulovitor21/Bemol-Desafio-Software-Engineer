@@ -13,9 +13,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UsuarioModule } from './usuario/usuario.module';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,35 @@
+<section>
+
+    <div class="d-flex justify-content-between">
+      <h4>Lista de Usuários</h4>
+      <a routerLink="/usuario/cadastrar" class="btn btn-success">Cadastrar Usuario</a>
+    </div>
+  
+    <br>
+  
+    <table class="table ">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Data de Nascimento</th>
+          <th>CEP</th>
+          <th width="220px">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{ usuario.id }}</td>
+          <td>{{ usuario.nome }}</td>
+          <td>{{ usuario.data_nascimento | date:'dd-MM-yyyy' }}</td>
+          <td>{{ usuario.cep }}</td>
+          <td>
+            <a href="#" [routerLink]="['/usuario', 'editar', usuario.id ]" class="btn btn-primary"
+              style="color: #fff; background-color: #007bff;">Editar</a>
+            <button type="button" (click)="deleteUsuario(usuario.id)" class="btn btn-danger"
+              style="color: #fff; background-color: #dc3545; margin-left: 10px;">Deletar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>

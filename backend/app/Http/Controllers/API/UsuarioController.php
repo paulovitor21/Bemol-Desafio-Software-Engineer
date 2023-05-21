@@ -19,7 +19,7 @@ class UsuarioController extends Controller
         $data['cep'] = $request['cep'];
         Usuario::create($data);
         return response()->json([
-            'message' => "Successfully created",
+            'message' => "Criado com sucesso!",
             'success' => true
         ], 200);
       }
@@ -27,7 +27,7 @@ class UsuarioController extends Controller
       public function delete($id){
         $res = Usuario::find($id)->delete();
         return response()->json([
-            'message' => "Successfully deleted",
+            'message' => "Apagado com sucesso!",
             'success' => true
         ], 200);
       }
@@ -43,7 +43,7 @@ class UsuarioController extends Controller
         $data['cep'] = $request['cep'];
         Usuario::find($id)->update($data);
         return response()->json([
-            'message' => "Successfully updated",
+            'message' => "Atualizado com sucesso!",
             'success' => true
         ], 200);
       }

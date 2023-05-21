@@ -1,0 +1,55 @@
+<div>
+
+    <div class="d-flex justify-content-between">
+      <h4>Formulário de Cadastro de Usuário</h4>
+      <a href="#" routerLink="/usuario/listar" class="btn btn-primary">Voltar</a>
+    </div>
+  
+    <hr />
+  
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+      <div class="form-group row">
+        <div class="col-md-6 ">
+          <label for="nome">Nome:</label>
+          <input formControlName="nome" id="nome" type="text" class="form-control">
+          <div *ngIf="f.nome.touched && f.nome.invalid" class="alert alert-danger mt-2">
+            <div *ngIf="f.nome.errors.required">*O nome é obrigatório.</div>
+            <div *ngIf="f.nome.errors.pattern">*O nome deve conter apenas letras.</div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group row mt-4">
+        <div class="col-md-6 ">
+          <label for="data_nascimento">Data de Nascimento:</label>
+          <input formControlName="data_nascimento" id="data_nascimento" type="date" class="form-control">
+          <div *ngIf="f.data_nascimento.touched && f.data_nascimento.invalid" class="alert alert-danger mt-2">
+            <div *ngIf="f.data_nascimento.errors.required">*A data de nascimento é obrigatório.</div>
+            <div *ngIf="f.data_nascimento.errors.pattern">*Deve conter apenas número.</div>
+            <div *ngIf="f.data_nascimento.hasError('idadeMinima')">Você precisa ser maior de 18 anos para se cadastrar.</div>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="form-group row mt-4">
+        <div class="col-md-6 ">
+          <label for="cep">CEP:</label>
+          <input formControlName="cep" id="cep" type="text" class="form-control">
+          <div *ngIf="f.cep.touched && f.cep.invalid" class="alert alert-danger mt-2">
+            <div *ngIf="f.cep.errors.required">*CEP é obrigatório.</div>
+            <div *ngIf="f.cep.errors.pattern">*O CEP deve estar no formato 12345-678.</div>
+            <div *ngIf="f.cep.errors && f.cep.errors.cepNaoAmazonas">
+              O CEP informado não pertence ao estado do Amazonas.
+            </div>
+            <div *ngIf="f.cep.errors && f.cep.errors.cepInvalido">
+              CEP inválido. 
+            </div> 
+          </div>        
+        </div>
+      </div>
+  
+      <button class="btn btn-primary mt-4" type="submit" [disabled]="!form.valid">Cadastrar</button>
+    </form>
+  </div>
